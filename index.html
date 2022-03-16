@@ -4,26 +4,24 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Five Nights at Freddy's: Security Breach</title>
+    <link rel="stylesheet" href="./styles/style.css" />
+    <title>Vite App</title>
   </head>
   <body>
-    <div id="container">
+    <div class="container">
       <h1>Lista de tarefas</h1>
-
-      <form id="task-form" onsubmit="addTask(event)">
-        <label for="task-description">Descrição da tarefa</label>
+      <h2>Melhor que ZenHub, Trello e Monday juntos.</h2>
+      
+      <form>
         <input
           type="text"
-          name="task-description"
-          id="task-description"
-          placeholder="Lavar as mãos antes de comer"
+          name="taskDescription"
+          placeholder="Digite a descrição da tarefa"
+          autocomplete="off"
           required />
       </form>
-
-      <div id="task-list-area">
-        <ul id="task-list"></ul>
-      </div>
+      
+      <ul id="lista-de-tarefas"></ul>
     </div>
 
     <script src="/main.js"></script>

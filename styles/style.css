@@ -1,0 +1,96 @@
+@import './fonts.css';
+
+* {
+  font-family: 'Open Sans';
+}
+
+.container {
+  margin: 64px;
+}
+
+h1, h2 {
+  font-family: 'Fredoka';
+  font-weight: lighter;
+}
+
+h1 {
+  font-size: 300%;
+}
+
+h2 {
+  font-size: 125%;
+  color: gray;
+}
+
+input[type='text'] {
+  border: none;
+  outline: none;
+  
+  width: 512px;
+  height: 48px;
+  
+  max-width: 100%;
+  box-sizing: border-box;
+
+  border-bottom: 1px solid gray;
+
+  font-size: 100%;
+}
+
+input[type='text']::placeholder {
+  color: gray;
+  opacity: .75;
+}
+
+ul {
+  width: 512px;
+  max-width: 100%;
+
+  margin-top: 32px;
+  
+  padding-left: 0;
+  list-style-type: none;
+}
+
+li,
+li div {
+  align-items: center;
+  display: flex;
+}
+
+li {
+  justify-content: space-between;
+}
+
+li input[type='checkbox'] {
+  width:  24px;
+  height: 24px;
+
+  margin-right: 16px;
+}
+
+li span {
+  line-height: 1.5;
+}
+
+.times {
+  font-size: 150%;
+}
+
+@media only screen and (max-width: 768px) {
+  .container {
+    margin: 32px 16px;
+  }
+
+  h1 {
+    font-size: 275%;
+  }
+
+  h1, p {
+    text-align: center;
+  }
+
+  input[type='text'] {
+    font-size: 100%;
+  }
+}
