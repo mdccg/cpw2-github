@@ -7,6 +7,9 @@
 - [ ] Pesquisar unidades de medida úteis para piso
 - [ ] Mostrar o valor total e se está tudo sob controle
 - [ ] Tentar aumentar/diminuir a prévia do piso conforme os valores inseridos pelo usuário (opcional)
+- Deixar as seguintes telas responsivas:
+  - [X] Home
+  - [ ] Calculadora de pisos
 
 ## [Protótipo visual](https://figma.fun/C1bSRZ)
 

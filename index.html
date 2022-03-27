@@ -10,11 +10,34 @@
 </head>
 
 <body>
-  <div class="container">
-    {{> header }}
+  <main id="home">
+    <div class="container">
+      {{> header }}
 
-    <!-- bora -->
-  </div>
+      <div>
+        <h2>Decoramos a sua casa e poupamos o seu bolso</h2>
+        <p>Escreva exatamente de quanto piso você precisa e calculamos exatamente o que você precisa gastar, sem
+          desperdícios.</p>
+        <p>Elegância para a sua casa e asas à sua imaginação.</p>
+      </div>
+
+      <form id="form-orcamento">
+        <label for="orcamento">Informe o seu orçamento inicial para começarmos</label>
+
+        <div id="input-orcamento">
+          <input class="input-style" type="number" name="orcamento" placeholder="Orçamento inicial (R$)"
+            autocomplete="off" step="0.01" />
+          <button class="unselectable">
+            <img src="./assets/icons/arrow-down-solid.svg" alt="Prosseguir" />
+          </button>
+        </div>
+
+        <small>Fique à vontade para usar ponto ou vírgula como separador da parte fracionária do número.</small>
+      </form>
+    </div>
+  </main>
+
+  <script src="./index.js"></script>
 </body>
 
 </html>
