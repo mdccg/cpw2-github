@@ -1,6 +1,7 @@
 @import url('./reset.css');
 @import url('./fonts.css');
 @import url('./palette.css');
+@import url('./formulario.css');
 
 :root {
   --background-image: url('./../assets/images/loja.jpeg');
@@ -41,21 +42,33 @@ html, body, main {
   min-height: 100vh;
 }
 
+sup {
+  vertical-align: super;
+  font-size: 75%;
+}
+
+b {
+  font-weight: bold;
+}
+
 .container {
   padding: 32px 64px;
 }
 
 .input-style {
   outline: none;
+  box-sizing: border-box;
 
   width: 100%;
+  height: 64px;
   max-width: 100%;
 
   font-family: 'Open Sans';
   color: var(--dracula-orchid);
   font-size: 125%;
 
-  border: 1px solid var(--city-lights);
+  border: 2px solid var(--city-lights);
+  border-radius: 8px;
   padding: 0 16px;
 }
 
@@ -225,6 +238,7 @@ header h1 {
 
   #home #form-orcamento #input-orcamento input {
     font-size: 90%;
+    height: 48px;
   }
 
   #home #form-orcamento #input-orcamento button {

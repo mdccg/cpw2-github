@@ -1,0 +1,270 @@
+#formulario .colunas {
+  display: flex;
+}
+
+#formulario form,
+#formulario #previa {
+  margin-top: 128px;
+  flex: 1;
+}
+
+#formulario form label {
+  color: var(--dracula-orchid);
+  font-size: 150%;
+  
+  font-weight: bold;
+}
+
+#formulario form > div {
+  margin: 24px 0 48px;
+  
+  align-items: center;
+  display: flex;
+}
+
+#formulario form #input-dimensoes input {
+  width: 37.5%;
+}
+
+#formulario form #input-dimensoes span {
+  color: var(--dracula-orchid);
+  font-size: 125%;
+}
+
+#formulario form #input-dimensoes select {
+  background-color: white;
+  width: 25%;
+
+  color: var(--american-river);
+
+  font-weight: bold;
+}
+
+#formulario form #input-quantidade input {
+  width: 25%;
+}
+
+#formulario form #input-quantidade span {
+  color: var(--american-river);
+  font-size: 125%;
+
+  font-weight: bold; 
+}
+
+#formulario form #input-piso {
+  align-items: flex-start;
+  flex-direction: column;
+  display: flex;
+}
+
+#formulario form #input-piso .input-tipo-piso {
+  align-items: center;
+  display: flex;
+
+  margin-bottom: 24px;
+}
+
+#formulario form #input-piso .input-tipo-piso div {
+  flex-direction: column;
+  display: flex;
+}
+
+#formulario form #input-piso .input-tipo-piso input {
+  width:  32px;
+  height: 32px;
+
+  margin-right: 16px;
+}
+
+#formulario form #input-piso .input-tipo-piso span {
+  font-size: 125%;
+
+  line-height: 1.15;
+}
+
+#formulario form #input-piso .input-tipo-piso .nome-piso {
+  color: var(--dracula-orchid);
+}
+
+#formulario form #input-piso .input-tipo-piso .preco-piso {
+  color: var(--american-river);
+}
+
+#formulario form #input-dimensoes > *:not(:last-child),
+#formulario form #input-quantidade > *:not(:last-child) {
+  margin-right: 16px;
+}
+
+#formulario form button {
+  border: none;
+  border-radius: 4px;
+  background-color: var(--wonyous);
+  
+  width: 62.5%;
+  height: 64px;
+
+  font-family: 'Open Sans';
+  color: white;
+  font-size: 125%;
+
+  font-weight: bold;
+
+  cursor: pointer;
+  opacity: .9;
+}
+
+#formulario form button:hover {
+  opacity: 1;
+}
+
+#formulario form button:active {
+  opacity: .75;
+}
+
+#formulario #previa {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+#formulario #previa #face {
+  max-width: 100%;
+  width:  256px;
+  height: 256px;
+}
+
+#formulario #carrinho,
+#formulario #status {
+  margin-top: 64px;
+}
+
+#formulario #carrinho {
+  width: 31.25%;
+  
+  margin-right: 64px;
+}
+
+#formulario #carrinho #cabecalho-carrinho,
+#formulario #carrinho #cabecalho-carrinho div {
+  align-items: center;
+  display: flex;
+}
+
+#formulario #carrinho #cabecalho-carrinho {
+  margin-bottom: 16px;
+  
+  justify-content: space-between;
+  height: 64px;
+  
+  cursor: pointer;
+}
+
+#formulario #carrinho #cabecalho-carrinho svg {
+  fill: var(--dracula-orchid);
+}
+
+#formulario #carrinho #cabecalho-carrinho #cart-shopping-solid {
+  width:  32px;
+  height: 32px;
+  
+  margin-right: 16px;
+}
+
+#formulario #carrinho #cabecalho-carrinho span {
+  color: var(--dracula-orchid);
+  font-size: 150%;
+  
+  font-weight: bold;
+}
+
+#formulario #carrinho #cabecalho-carrinho #angle-down-solid {
+  width:  24px;
+  height: 24px;
+}
+
+#formulario #carrinho .compra {
+  background-color: var(--clouds);
+  border-radius: 8px;
+  padding: 16px;
+
+  margin-bottom: 24px;
+}
+
+#formulario #carrinho .compra .cabecalho-compra {
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+
+  margin-bottom: 8px;
+}
+
+#formulario #carrinho .compra .cabecalho-compra span {
+  color: var(--dracula-orchid);
+  font-size: 125%;
+
+  font-weight: bold;
+}
+
+#formulario #carrinho .compra .cabecalho-compra .icone {
+  width:  32px;
+  height: 32px;
+
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+#formulario #carrinho .compra .cabecalho-compra .icone .trash-solid {
+  width:  24px;
+  height: 24px;
+
+  fill: var(--alizarin);
+}
+
+#formulario #carrinho .compra .conteudo-compra {
+  flex-direction: column;
+  display: flex;
+}
+
+#formulario #carrinho .compra .conteudo-compra span {
+  color: var(--american-river);
+  font-size: 100%;
+
+  line-height: 1.75;
+}
+
+@media only screen and (max-width: 1300px) {
+  #formulario .colunas {
+    flex-direction: column;
+  }
+
+  #formulario form #input-dimensoes {
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  #formulario form #input-dimensoes > *:not(:last-child) {
+    margin-bottom: 16px;
+    margin-right: 0;
+  }
+
+  #formulario form #input-dimensoes input {
+    width: 43.75%;
+  }
+
+  #formulario form #input-dimensoes select,
+  #formulario form #input-quantidade input,
+  #formulario form button,
+  #formulario #carrinho {
+    width: 100%;
+  }
+
+  #formulario form button {
+    font-size: 112.5%;
+  }
+
+  #formulario #previa #face {
+    width:  192px;
+    height: 192px;
+  }
+}

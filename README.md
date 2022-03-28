@@ -4,12 +4,15 @@
 
 - [X] `Mockup` Adicionar uma tela para perguntar o orçamento inicial
 - [X] `Mockup` Rearranjar algumas partes da tela do formulário
-- [ ] Pesquisar unidades de medida úteis para piso
+- [X] Pesquisar unidades de medida úteis para piso
 - [ ] Mostrar o valor total e se está tudo sob controle
-- [ ] Tentar aumentar/diminuir a prévia do piso conforme os valores inseridos pelo usuário (opcional)
 - Deixar as seguintes telas responsivas:
   - [X] Home
   - [ ] Calculadora de pisos
+- [X] Criar função p/ calcular o preço com base na quantidade de metro quadrado comprada
+- [ ] Adicionar scroll no carrinho
+- [ ] Criar uma pré-visualização do valor total + área total a serem compradas
+- [ ] Tentar aumentar/diminuir a prévia do piso conforme os valores inseridos pelo usuário (opcional)
 
 ## [Protótipo visual](https://figma.fun/C1bSRZ)
 
