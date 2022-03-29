@@ -8,6 +8,62 @@
   flex: 1;
 }
 
+#formulario form #modal-contra-o-sistema-metrico-estadunidense {
+  display: none;
+
+  padding: 8px;
+  
+  /* https://codepen.io/pigparlor/pen/wvMBPvO */
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--turbo),
+    var(--turbo) 15px,
+    var(--dracula-orchid) 15px,
+    var(--dracula-orchid) 30px
+  );
+
+  border-radius: 4px;
+}
+
+#formulario form #modal-contra-o-sistema-metrico-estadunidense #conteudo-modal-contra-o-sistema-metrico-estadunidense {
+  background-color: white;
+  padding: 24px;
+
+  flex-direction: column;
+  display: flex;
+  flex: 1;
+}
+
+#formulario form #modal-contra-o-sistema-metrico-estadunidense #conteudo-modal-contra-o-sistema-metrico-estadunidense #cabecalho-modal-contra-o-sistema-metrico-estadunidense {
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  display: flex;
+
+  margin-bottom: 16px;
+}
+
+#formulario form #modal-contra-o-sistema-metrico-estadunidense #conteudo-modal-contra-o-sistema-metrico-estadunidense #cabecalho-modal-contra-o-sistema-metrico-estadunidense img {
+  width:  64px;
+  height: 64px;
+
+  margin-right: 16px;
+}
+
+#formulario form #modal-contra-o-sistema-metrico-estadunidense #conteudo-modal-contra-o-sistema-metrico-estadunidense #cabecalho-modal-contra-o-sistema-metrico-estadunidense span {
+  font-family: 'Fredoka One';
+  color: var(--dracula-orchid);
+  font-size: 300%;
+
+  text-transform: uppercase;
+}
+
+#formulario form #modal-contra-o-sistema-metrico-estadunidense #conteudo-modal-contra-o-sistema-metrico-estadunidense p {
+  color: var(--dracula-orchid);
+  
+  line-height: 1.5;
+}
+
 #formulario form label {
   color: var(--dracula-orchid);
   font-size: 150%;
@@ -123,6 +179,7 @@
 
 #formulario #previa {
   justify-content: center;
+  flex-direction: column;
   align-items: center;
   display: flex;
 }
@@ -131,6 +188,48 @@
   max-width: 100%;
   width:  256px;
   height: 256px;
+
+  margin-bottom: 48px;
+}
+
+#formulario #previa #facada-atual {
+  color: var(--dracula-orchid);
+
+  font-weight: bold;
+ 
+  display: flex;
+  margin-bottom: 16px;
+}
+
+#formulario #previa #facada-atual #real {
+  font-size: 200%;
+
+  align-self: flex-end;
+
+  position: relative;
+  bottom: 4px;
+
+  margin-right: 4px;
+}
+
+#formulario #previa #facada-atual #parte-inteira {
+  font-size: 300%;
+}
+
+#formulario #previa #facada-atual #parte-fracionaria {
+  font-size: 150%;
+
+  position: relative;
+  top: 4px;
+
+  margin-left: 2px;
+}
+
+#formulario #previa #area-atual {
+  color: var(--american-river);
+  font-size: 175%;
+  
+  font-weight: bold;
 }
 
 #formulario #carrinho,
@@ -180,17 +279,48 @@
 #formulario #carrinho #cabecalho-carrinho #angle-down-solid {
   width:  24px;
   height: 24px;
+
+  transform: rotate(180deg);
 }
 
-#formulario #carrinho .compra {
+#formulario #carrinho #corpo-carrinho {
+  overflow-y: scroll;
+  height: 512px;
+}
+
+#formulario #carrinho ::-webkit-scrollbar {
+  width: 8px;
+}
+
+#formulario #carrinho ::-webkit-scrollbar-track {
+  background-color: var(--lynx-white);
+}
+
+#formulario #carrinho ::-webkit-scrollbar-thumb {
+  background-color: var(--soothing-breeze);
+}
+
+#formulario #carrinho ::-webkit-scrollbar-thumb:hover {
+  background-color: var(--american-river);
+}
+
+#formulario #carrinho ::-webkit-scrollbar-track,
+#formulario #carrinho ::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+
+}
+
+#formulario #carrinho #corpo-carrinho .compra {
   background-color: var(--clouds);
   border-radius: 8px;
   padding: 16px;
+}
 
+#formulario #carrinho #corpo-carrinho .compra:not(:last-child) {
   margin-bottom: 24px;
 }
 
-#formulario #carrinho .compra .cabecalho-compra {
+#formulario #carrinho #corpo-carrinho .compra .cabecalho-compra {
   justify-content: space-between;
   align-items: center;
   display: flex;
@@ -198,35 +328,37 @@
   margin-bottom: 8px;
 }
 
-#formulario #carrinho .compra .cabecalho-compra span {
+#formulario #carrinho #corpo-carrinho .compra .cabecalho-compra span {
   color: var(--dracula-orchid);
   font-size: 125%;
 
   font-weight: bold;
 }
 
-#formulario #carrinho .compra .cabecalho-compra .icone {
+#formulario #carrinho #corpo-carrinho .compra .cabecalho-compra .icone {
   width:  32px;
   height: 32px;
 
   justify-content: center;
   align-items: center;
   display: flex;
+
+  cursor: pointer;
 }
 
-#formulario #carrinho .compra .cabecalho-compra .icone .trash-solid {
+#formulario #carrinho #corpo-carrinho .compra .cabecalho-compra .icone .trash-solid {
   width:  24px;
   height: 24px;
 
   fill: var(--alizarin);
 }
 
-#formulario #carrinho .compra .conteudo-compra {
+#formulario #carrinho #corpo-carrinho .compra .conteudo-compra {
   flex-direction: column;
   display: flex;
 }
 
-#formulario #carrinho .compra .conteudo-compra span {
+#formulario #carrinho #corpo-carrinho .compra .conteudo-compra span {
   color: var(--american-river);
   font-size: 100%;
 
@@ -236,6 +368,14 @@
 @media only screen and (max-width: 1300px) {
   #formulario .colunas {
     flex-direction: column;
+  }
+
+  #formulario form #modal-contra-o-sistema-metrico-estadunidense #conteudo-modal-contra-o-sistema-metrico-estadunidense #cabecalho-modal-contra-o-sistema-metrico-estadunidense span {
+    font-size: 125%;
+  }
+
+  #formulario form #modal-contra-o-sistema-metrico-estadunidense #conteudo-modal-contra-o-sistema-metrico-estadunidense p {
+    font-size: 82.5%;
   }
 
   #formulario form #input-dimensoes {

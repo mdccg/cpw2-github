@@ -16,14 +16,27 @@
 
       <div class="colunas">
         <form>
+          <div id="modal-contra-o-sistema-metrico-estadunidense">
+            <div id="conteudo-modal-contra-o-sistema-metrico-estadunidense">
+              <div id="cabecalho-modal-contra-o-sistema-metrico-estadunidense">
+                <img src="/assets/icons/warning.svg" alt="Aviso" />
+                <span>Atenção!</span>
+              </div>
+
+              <p>Notamos que você selecionou a unidade de medida “passos de cavalo”. Recomendamos <b>fortemente</b> que
+                escolha outra unidade de medida, pois não há garantia da eficiência do sistema métrico estadunidense em
+                nosso aplicativo. Pedimos desculpas pelo transtorno.</p>
+            </div>
+          </div>
+
           <label>Dimensões</label>
           <div id="input-dimensoes">
-            <input class="input-style" type="number" name="comprimento" placeholder="Comprimento" autocomplete="off"
+            <input class="input-style" type="number" name="comprimento" id="comprimento" placeholder="Comprimento" autocomplete="off" min="0"
               step="0.01" required />
             <span>&times;</span>
-            <input class="input-style" type="number" name="largura" placeholder="Largura" autocomplete="off" step="0.01"
+            <input class="input-style" type="number" name="largura" id="largura" placeholder="Largura" autocomplete="off" min="0" step="0.01"
               required />
-            <select class="input-style" name="unidade">
+            <select class="input-style" name="unidade" id="unidade">
               <option value="m">metros</option>
               <option value="cm">centímetros</option>
               <option value="pc">passos de cavalo</option>
@@ -32,7 +45,7 @@
 
           <label for="quantidade">Quantidade</label>
           <div id="input-quantidade">
-            <input class="input-style" type="number" name="quantidade" placeholder="Quantidade" autocomplete="off"
+            <input class="input-style" type="number" name="quantidade" id="quantidade" placeholder="Quantidade" autocomplete="off" min="0" step="1"
               required />
             <span>unidades</span>
           </div>
@@ -67,6 +80,12 @@
 
         <div id="previa">
           <div id="face"></div>
+          <span id="facada-atual">
+            <span id="real">R$</span>
+            <span id="parte-inteira">3.999</span>
+            <span id="parte-fracionaria">99</span>
+          </span>
+          <span id="area-atual"></span>
         </div>
       </div>
 
@@ -89,7 +108,7 @@
             </svg>
           </div>
 
-          <!-- compras aqui -->
+          <div id="corpo-carrinho"></div>
         </div>
         <div id="status">
           <span>Mozart</span>
@@ -99,6 +118,8 @@
   </main>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-masker/1.2.0/vanilla-masker.min.js" integrity="sha512-RbMQw6xKGymv6bRMO4z5OxHBzzem7BPEQX7nTJC9G08A70gXdUka76Rvgey83MsSXrIEJddog0vxUKN6iTce2Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="/utils/preview_utils.js"></script>
+  <script src="/utils/number_utils.js"></script>
   <script src="./index.js"></script>
 </body>
 

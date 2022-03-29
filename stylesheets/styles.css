@@ -70,10 +70,20 @@ b {
   border: 2px solid var(--city-lights);
   border-radius: 8px;
   padding: 0 16px;
+
+  transition: all .5s;
 }
 
 .input-style::placeholder {
   color: var(--soothing-breeze);
+}
+
+.displaying-error {
+  border: 1px solid var(--alizarin);
+}
+
+.displaying-error::placeholder {
+  color: var(--alizarin);
 }
 
 header {

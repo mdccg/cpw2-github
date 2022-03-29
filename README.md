@@ -2,16 +2,18 @@
 
 ## _To-do list_
 
-- [X] `Mockup` Adicionar uma tela para perguntar o orçamento inicial
-- [X] `Mockup` Rearranjar algumas partes da tela do formulário
-- [X] Pesquisar unidades de medida úteis para piso
-- [ ] Mostrar o valor total e se está tudo sob controle
-- Deixar as seguintes telas responsivas:
-  - [X] Home
-  - [ ] Calculadora de pisos
-- [X] Criar função p/ calcular o preço com base na quantidade de metro quadrado comprada
-- [ ] Adicionar scroll no carrinho
-- [ ] Criar uma pré-visualização do valor total + área total a serem compradas
+- [X] Adicionar scroll no carrinho
+- [X] Pesquisar como fazer uma borda com duas cores em CSS
+- [X] Uma águia de distância
+- [X] Salvar o carrinho no armazenamento local
+- [X] Criar uma função para exigir que o usuário preencha o campo
+- [ ] Configurar os tab indexes das `<input>` de rádio
+- [ ] Pesquisar como capturar o valor não nulo de uma (ou mais) `<input>` de rádio 
+- [ ] Criar uma função para percorrer todas as compras e calcular:
+  - O total de dinheiro gasto
+  - O total de piso (em m<sup>2</sup>) adquirido
+- [X] Mudar o step das `<input>` ao mudar a unidade de medida
+- [ ] Alinhar a prévia para que o card da águia de distância não a mova
 - [ ] Tentar aumentar/diminuir a prévia do piso conforme os valores inseridos pelo usuário (opcional)
 
 ## [Protótipo visual](https://figma.fun/C1bSRZ)
@@ -29,6 +31,7 @@
 
 - [joypixels/emojione-legacy: This repo was setup for anyone still needing access to our version 1.0 emoji set.](https://github.com/joypixels/emojione-legacy)
 - [Font Awesome](https://fontawesome.com/)
+- [EmojiTwo/emojitwo: Fork of the last fully free EmojiOne™ 2 artwork](https://github.com/EmojiTwo/emojitwo)
 
 ## Cores
 
