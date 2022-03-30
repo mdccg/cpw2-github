@@ -7,18 +7,21 @@
 - [X] Uma águia de distância
 - [X] Salvar o carrinho no armazenamento local
 - [X] Criar uma função para exigir que o usuário preencha o campo
-- [ ] Configurar os tab indexes das `<input>` de rádio
-- [ ] Pesquisar como capturar o valor não nulo de uma (ou mais) `<input>` de rádio 
-- [ ] Criar uma função para percorrer todas as compras e calcular:
+- [ ] ~~Configurar os tab indexes das `<input>` de rádio~~
+- [X] Pesquisar como capturar o valor não nulo de uma (ou mais) `<input>` de rádio 
+- [X] Criar uma função para percorrer todas as compras e calcular:
   - O total de dinheiro gasto
   - O total de piso (em m<sup>2</sup>) adquirido
 - [X] Mudar o step das `<input>` ao mudar a unidade de medida
-- [ ] Alinhar a prévia para que o card da águia de distância não a mova
-- [ ] Tentar aumentar/diminuir a prévia do piso conforme os valores inseridos pelo usuário (opcional)
+- [X] Alinhar a prévia para que o card da águia de distância não a mova
+- [X] Corrigir a máscara da facada no componente da compra
+- [X] Calcular o total de dinheiro gasto, área adquirida e subtrair pelo orçamento
+- [ ] ~~Tentar aumentar/diminuir a prévia do piso conforme os valores inseridos pelo usuário (opcional)~~
 
-## [Protótipo visual](https://figma.fun/C1bSRZ)
+## Galeria do [protótipo visual](https://figma.fun/C1bSRZ)
 
-`// TODO jogar as imagens aqui`
+<img style="width: 1366px; max-width: 100%;" src="https://i.imgur.com/lDKqQSx.png" alt="Tela de boas-vindas" />
+<img style="width: 1366px; max-width: 100%;" src="https://i.imgur.com/w2zgdX2.png" alt="Calculadora de pisos" />
 
 ## Créditos pelas mídias utilizadas
 

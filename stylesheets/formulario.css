@@ -2,17 +2,18 @@
   display: flex;
 }
 
+#formulario header {
+  margin-bottom: 128px;
+}
+
 #formulario form,
 #formulario #previa {
-  margin-top: 128px;
   flex: 1;
 }
 
-#formulario form #modal-contra-o-sistema-metrico-estadunidense {
+#formulario #modal-contra-o-sistema-metrico-estadunidense {
   display: none;
 
-  padding: 8px;
-  
   /* https://codepen.io/pigparlor/pen/wvMBPvO */
   background: repeating-linear-gradient(
     -45deg,
@@ -21,11 +22,15 @@
     var(--dracula-orchid) 15px,
     var(--dracula-orchid) 30px
   );
-
   border-radius: 4px;
+
+  width: 48.75%;
+  padding: 8px;
+
+  margin-bottom: 64px;
 }
 
-#formulario form #modal-contra-o-sistema-metrico-estadunidense #conteudo-modal-contra-o-sistema-metrico-estadunidense {
+#formulario #modal-contra-o-sistema-metrico-estadunidense #conteudo-modal-contra-o-sistema-metrico-estadunidense {
   background-color: white;
   padding: 24px;
 
@@ -34,7 +39,7 @@
   flex: 1;
 }
 
-#formulario form #modal-contra-o-sistema-metrico-estadunidense #conteudo-modal-contra-o-sistema-metrico-estadunidense #cabecalho-modal-contra-o-sistema-metrico-estadunidense {
+#formulario #modal-contra-o-sistema-metrico-estadunidense #conteudo-modal-contra-o-sistema-metrico-estadunidense #cabecalho-modal-contra-o-sistema-metrico-estadunidense {
   flex-direction: row;
   align-items: center;
   flex-wrap: wrap;
@@ -43,14 +48,14 @@
   margin-bottom: 16px;
 }
 
-#formulario form #modal-contra-o-sistema-metrico-estadunidense #conteudo-modal-contra-o-sistema-metrico-estadunidense #cabecalho-modal-contra-o-sistema-metrico-estadunidense img {
+#formulario #modal-contra-o-sistema-metrico-estadunidense #conteudo-modal-contra-o-sistema-metrico-estadunidense #cabecalho-modal-contra-o-sistema-metrico-estadunidense img {
   width:  64px;
   height: 64px;
 
   margin-right: 16px;
 }
 
-#formulario form #modal-contra-o-sistema-metrico-estadunidense #conteudo-modal-contra-o-sistema-metrico-estadunidense #cabecalho-modal-contra-o-sistema-metrico-estadunidense span {
+#formulario #modal-contra-o-sistema-metrico-estadunidense #conteudo-modal-contra-o-sistema-metrico-estadunidense #cabecalho-modal-contra-o-sistema-metrico-estadunidense span {
   font-family: 'Fredoka One';
   color: var(--dracula-orchid);
   font-size: 300%;
@@ -58,7 +63,7 @@
   text-transform: uppercase;
 }
 
-#formulario form #modal-contra-o-sistema-metrico-estadunidense #conteudo-modal-contra-o-sistema-metrico-estadunidense p {
+#formulario #modal-contra-o-sistema-metrico-estadunidense #conteudo-modal-contra-o-sistema-metrico-estadunidense p {
   color: var(--dracula-orchid);
   
   line-height: 1.5;
@@ -365,16 +370,92 @@
   line-height: 1.75;
 }
 
+#formulario #status #cabecalho-status {
+  margin-bottom: 16px;
+
+  align-items: center;
+  display: flex;
+  height: 64px;
+}
+
+#formulario #status #cabecalho-status svg {
+  width:  32px;
+  height: 32px;
+  
+  margin-right: 16px;
+}
+
+#formulario #status #cabecalho-status #face-smile-solid {
+  fill: var(--nephritis);
+}
+
+#formulario #status #cabecalho-status #face-frown-solid {
+  display: none;
+  fill: var(--alizarin);
+}
+
+#formulario #status #cabecalho-status span {
+  color: var(--nephritis);
+  font-size: 200%;
+
+  font-weight: bold;
+}
+
+#formulario #status label {
+  color: var(--dracula-orchid);
+  font-size: 150%;
+  
+  font-weight: bold;
+}
+
+#formulario #status #input-orcamento {
+  margin: 24px 0 48px;
+  
+  align-items: center;
+  display: flex;
+}
+
+#formulario #status #input-orcamento span {
+  color: var(--american-river);
+  font-size: 125%;
+
+  font-weight: bold; 
+
+  margin-right: 16px;
+}
+
+#formulario #status #input-orcamento {
+  width: 75%;
+}
+
+#formulario #status #batatinhas {
+  flex-direction: column;
+  display: flex;
+
+  color: var(--dracula-orchid);
+  font-size: 150%;
+
+  word-break: break-all;
+}
+
+#formulario #status #batatinhas > * {
+  margin-bottom: 24px;
+}
+
 @media only screen and (max-width: 1300px) {
   #formulario .colunas {
     flex-direction: column;
   }
 
-  #formulario form #modal-contra-o-sistema-metrico-estadunidense #conteudo-modal-contra-o-sistema-metrico-estadunidense #cabecalho-modal-contra-o-sistema-metrico-estadunidense span {
+  #formulario #modal-contra-o-sistema-metrico-estadunidense {
+    width: 100%;
+  }
+
+  #formulario #modal-contra-o-sistema-metrico-estadunidense #conteudo-modal-contra-o-sistema-metrico-estadunidense #cabecalho-modal-contra-o-sistema-metrico-estadunidense span {
     font-size: 125%;
   }
 
-  #formulario form #modal-contra-o-sistema-metrico-estadunidense #conteudo-modal-contra-o-sistema-metrico-estadunidense p {
+  #formulario #modal-contra-o-sistema-metrico-estadunidense #conteudo-modal-contra-o-sistema-metrico-estadunidense p {
     font-size: 82.5%;
   }
 
@@ -403,8 +484,24 @@
     font-size: 112.5%;
   }
 
+  #formulario #previa {
+    margin-top: 128px;
+  }
+
   #formulario #previa #face {
     width:  192px;
     height: 192px;
+  }
+
+  #formulario #status #cabecalho-status {
+    margin-bottom: 32px;
+  }
+
+  #formulario #status #input-orcamento {
+    width: 100%;
+  }
+
+  #formulario #status #batatinhas {
+    font-size: 112.5%;
   }
 }

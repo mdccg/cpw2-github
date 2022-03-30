@@ -1,5 +1,9 @@
 const face = document.getElementById('face');
 
+function show() {
+  face.style.display = 'block';
+}
+
 function setBkgdColor(color) {
   face.style.backgroundColor = color;
 }
@@ -27,6 +31,7 @@ function setBkgdSize(size) {
 }
 
 function previsualizarCeramica() {
+  show();
   setBkgdColor('var(--flat-flesh)');
   setBkgdImg('/assets/icons/rounded-plus-connected.svg');
   setBoxShadow('var(--squash-blossom)');
@@ -34,6 +39,7 @@ function previsualizarCeramica() {
 }
 
 function previsualizarPorcelanato() {
+  show();
   setBkgdColor('var(--city-lights)');
   setBkgdImg('/assets/icons/topography.svg');
   setBoxShadow('var(--soothing-breeze)');
@@ -41,8 +47,13 @@ function previsualizarPorcelanato() {
 }
 
 function previsualizarMadeira() {
+  show();
   setBkgdColor('var(--brown)');
   setBkgdImg('/assets/icons/topography.svg');
   setBoxShadow('var(--carafe)');
   setBkgdSize('150%');
+}
+
+function esconderPrevia() {
+  face.style.display = 'none';
 }

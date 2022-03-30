@@ -1,20 +1,34 @@
-const form = document.querySelector('form');
+const $ = document.querySelector.bind(document);
 
-const modalContraOSistemaMetricoEstadunidense = document.getElementById('modal-contra-o-sistema-metrico-estadunidense');
+const form = $('form');
 
-const inputComprimento = document.getElementById('comprimento');
-const inputLargura = document.getElementById('largura');
-const inputUnidade = document.getElementById('unidade');
-const inputQuantidade = document.getElementById('quantidade');
+const modalContraOSistemaMetricoEstadunidense = $('#modal-contra-o-sistema-metrico-estadunidense');
 
-const facadaAtualParteInteira = document.getElementById('parte-inteira');
-const facadaAtualParteFracionaria = document.getElementById('parte-fracionaria');
-const areaAtual = document.getElementById('area-atual');
+const inputComprimento = $('#comprimento');
+const inputLargura = $('#largura');
+const inputUnidade = $('#unidade');
+const inputQuantidade = $('#quantidade');
+const inputTipoCeramica = $('#ceramica');
+const inputTipoPorcelanato = $('#porcelanato');
+const inputTipoMadeira = $('#madeira');
 
-const carrinho = document.getElementById('carrinho');
-const cabecalhoCarrinho = document.getElementById('cabecalho-carrinho');
-const angleDownSolid = document.getElementById('angle-down-solid');
-const corpoCarrinho = document.getElementById('corpo-carrinho');
+const facadaAtualReal = $('#real');
+const facadaAtualParteInteira = $('#parte-inteira');
+const facadaAtualParteFracionaria = $('#parte-fracionaria');
+const areaAtual = $('#area-atual');
+
+const carrinho = $('#carrinho');
+const cabecalhoCarrinho = $('#cabecalho-carrinho');
+const angleDownSolid = $('#angle-down-solid');
+const corpoCarrinho = $('#corpo-carrinho');
+
+const faceSmileSolid = $('#face-smile-solid');
+const faceFrownSolid = $('#face-frown-solid');
+const cabecalhoStatusTitulo = $('#cabecalho-status > span');
+const inputOrcamento = $('#orcamento');
+const areaTotal = $('#area-total');
+const facadaTotal = $('#facada-total');
+const restante = $('#restante');
 
 function setModalContraOSistemaMetricoEstadunidense(aberto) {
   modalContraOSistemaMetricoEstadunidense.style.display = aberto ? 'flex' : 'none';
@@ -30,17 +44,15 @@ function printCompraHtml(compra) {
   
   comprimento = formatarNumero(arredondarNumero(comprimento));
   largura = formatarNumero(arredondarNumero(largura));
-  area = formatarNumero(arredondarNumero(area, 4));
-  facada = VMasker.toMoney(arredondarNumero(facada), {
-    separator: ',',
-    delimiter: '.',
-    unit: 'R$'
-  });
+  facada = formatarNumero(arredondarNumero(facada));
+
+  area = arredondarNumero(area, 4);
+  area = formatarNumero(area, unidade === 'cm' ? 4 : 2);
 
   var htmlCompra = `<div class="compra">
     <div class="cabecalho-compra">
       <span>${quantidade} piso${quantidade > 1 ? 's' : ''} de ${tipo}</span>
-      <div class="icone" onclick="removerCompra('${_id}')" title="Excluir compra">
+      <div class="icone" onclick="deletarCompra('${_id}')" title="Excluir compra">
         <svg class="trash-solid" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
           <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
           <path
@@ -57,26 +69,36 @@ function printCompraHtml(compra) {
         <b>Área total:</b> ${area} m<sup>2</sup>
       </span>
       <span>
-        <b>Facada:</b> ${facada}
+        <b>Facada:</b> R$ ${facada}
       </span>
     </div>
   </div>`;
 
   corpoCarrinho.insertAdjacentHTML('beforeend', htmlCompra);
+
+  atualizarStatusHtml();
 }
 
 function atualizarComprasHtml() {
   corpoCarrinho.innerHTML = '';
 
-  let compras = buscarCompras();
+  let compras = getCompras();
 
   compras.forEach(compra => {
     printCompraHtml(compra);
   });
+
+  atualizarStatusHtml();  
 }
 
-function adicionarCompra(compra) {
-  let compras = buscarCompras();
+function atualizarStatusHtml() {
+  calcularFacadaTotal();
+  calcularAreaTotal();
+  calcularRestante();
+}
+
+function addCompra(compra) {
+  let compras = getCompras();
   
   compras.push(compra);
 
@@ -85,14 +107,14 @@ function adicionarCompra(compra) {
   printCompraHtml(compra);
 }
 
-function buscarCompras() {
+function getCompras() {
   let compras = JSON.parse(localStorage.getItem('compras'));
 
   return compras || [];
 }
 
-function removerCompra(id) {
-  let compras = buscarCompras();
+function deletarCompra(id) {
+  let compras = getCompras();
 
   compras = compras.filter(({ _id }) => _id !== id);
 
@@ -119,7 +141,56 @@ function calcularFacada(quantidade, area, tipo) {
   return facada;
 }
 
-function dispararErro(event, real = true) {
+function calcularFacadaTotal(retornarValor = false) {
+  let compras = getCompras();
+  let facadas = compras.map(({ facada }) => facada);
+  let chuvaDeFacas = facadas.length ? facadas.reduce((previousValue, currentValue) => previousValue + currentValue) : 0;
+  
+  if (retornarValor) {
+    return chuvaDeFacas;
+  }
+
+  chuvaDeFacas = formatarNumero(chuvaDeFacas);
+
+  facadaTotal.innerText = chuvaDeFacas;
+}
+
+function calcularAreaTotal() {
+  let compras = getCompras();
+  let areas = compras.map(({ area }) => area);
+  let chuvaDeAreas = areas.length ? areas.reduce((previousValue, currentValue) => previousValue + currentValue) : 0;
+  
+  chuvaDeAreas = formatarNumero(chuvaDeAreas);
+  
+  areaTotal.innerText = chuvaDeAreas;
+}
+
+function calcularRestante() {
+  let chuvaDeMerreca = orcamento - calcularFacadaTotal(true);
+
+  chuvaDeMerreca = arredondarNumero(chuvaDeMerreca);
+
+  if (chuvaDeMerreca < 0) {
+    faceSmileSolid.style.display = 'none';
+    faceFrownSolid.style.display = 'block';
+
+    cabecalhoStatusTitulo.innerText = 'O orçamento estourou!';
+    cabecalhoStatusTitulo.style.color = 'var(--alizarin)';
+  } else {
+    faceSmileSolid.style.display = 'block';
+    faceFrownSolid.style.display = 'none';
+
+    cabecalhoStatusTitulo.innerText = 'Tudo sob controle!';
+    cabecalhoStatusTitulo.style.color = 'var(--nephritis)';
+
+  }
+
+  chuvaDeMerreca = formatarNumero(chuvaDeMerreca);
+
+  restante.innerText = chuvaDeMerreca;
+}
+
+function dispararErroCampoNumerico(event, real = true) {
   let input = event.target;
   let valor = +input.value;
   let valorValido = valor > 0;
@@ -145,107 +216,156 @@ function dispararErro(event, real = true) {
   }
 }
 
+function atualizarValoresPrevia(event, atributo) {
+  let valor = event.target.value;
+
+  if (!['unidade', 'tipo'].includes(atributo))
+    valor = +valor;
+
+  if (valor) {
+    valoresPrevia[atributo] = valor;
+    atualizarPrevia();
+  }
+}
+
 function atualizarPrevia() {
-  console.log(comprimentoAtual);
-  console.log(larguraAtual);
-  console.log(unidadeAtual);
-  console.log(quantidadeAtual);
+  let { comprimento, largura, unidade, quantidade, tipo } = valoresPrevia;
 
-  if (comprimentoAtual && larguraAtual) {
-    let area = calcularArea(comprimentoAtual, larguraAtual, unidadeAtual);
+  if (!quantidade) {
+    quantidade = 1;
+  }
 
-    area = formatarNumero(arredondarNumero(area, 4));
+  if (comprimento && largura && quantidade) {
+    let area = calcularArea(comprimento, largura, unidade);
 
-    areaAtual.innerHTML = `${area} m<sup>2</sup>`;
-    // TODO verificar se há um tipo selecionado
-    if (quantidadeAtual && tipoAtual) {
-      console.log('Agora lascou!');
+    let areaFormatada = arredondarNumero(area * quantidade, 4);
+    areaFormatada = formatarNumero(areaFormatada, unidade === 'cm' ? 4 : 2);
 
-    } else {
-      facadaAtualParteInteira.innerText = '';
-      facadaAtualParteFracionaria.innerText = '';
+    areaAtual.innerHTML = `${areaFormatada} m<sup>2</sup>`;
+    
+    if (quantidade && tipo) {
+      let facada = calcularFacada(quantidade, area, tipo);
 
+      let parteInteira = facada | 0;
+      let parteFracionaria = facada - parteInteira;
+      parteFracionaria *= 100;
+      parteFracionaria = parteFracionaria | 0;
+      parteFracionaria = ('0' + parteFracionaria).slice(-2); // zero à esquerda
+
+      facadaAtualReal.innerText = 'R$';
+      facadaAtualParteInteira.innerText = formatarNumero(parteInteira, 0);
+      facadaAtualParteFracionaria.innerText = parteFracionaria;
     }
 
   } else {
     areaAtual.innerHTML = '';
+    facadaAtualReal.innerText = '';
+    facadaAtualParteInteira.innerText = '';
+    facadaAtualParteFracionaria.innerText = '';
 
   }
 }
 
 function resetar() {
-  form.reset();
-  
-  comprimentoAtual = null;
-  larguraAtual = null;
-  unidadeAtual = 'm';
-  quantidadeAtual = null;
-  tipoAtual = null;
-  atualizarPrevia();
+  valoresPrevia.comprimento = null;
+  valoresPrevia.largura = null;
+  valoresPrevia.unidade = 'm';
+  valoresPrevia.quantidade = null;
+  valoresPrevia.tipo = null;
   
   setModalContraOSistemaMetricoEstadunidense(false);
+  atualizarPrevia();
+  esconderPrevia();
+  form.reset();
 }
 
-var comprimentoAtual = null;
-var larguraAtual = null;
-var unidadeAtual = 'm';
-var quantidadeAtual = null;
-var tipoAtual = null;
+var valoresPrevia = {
+  comprimento: null,
+  largura: null,
+  unidade: 'm',
+  quantidade: null,
+  tipo: null
+};
 
-inputComprimento.onblur = function(event) {
-  dispararErro(event);
-  
-  let valor = +event.target.value;  
-  if (valor) {
-    comprimentoAtual = valor;
-    atualizarPrevia();
-  }
-}
+var orcamento = localStorage.getItem('orcamento') || 0;
+var valorTotalAdquirido = null;
+var areaTotalAdquirida = null;
+var valorRestante = null;
 
-inputLargura.onblur = function(event) {
-  dispararErro(event);
+inputComprimento.onblur = event => dispararErroCampoNumerico(event);
+inputLargura.onblur = event => dispararErroCampoNumerico(event);
+inputQuantidade.onblur = event => dispararErroCampoNumerico(event, false);
+inputOrcamento.onblur = event => dispararErroCampoNumerico(event);
 
-  let valor = +event.target.value;  
-  if (valor) {
-    larguraAtual = valor;
-    atualizarPrevia();
-  }
-}
+inputComprimento.oninvalid = event => dispararErroCampoNumerico(event);
+inputLargura.oninvalid = event => dispararErroCampoNumerico(event);
+inputQuantidade.oninvalid = event => dispararErroCampoNumerico(event, false);
+
+inputComprimento.onkeyup = event => atualizarValoresPrevia(event, 'comprimento');
+inputLargura.onkeyup = event => atualizarValoresPrevia(event, 'largura');
+inputQuantidade.onkeyup = event => atualizarValoresPrevia(event, 'quantidade');
 
 inputUnidade.onchange = function(event) {
-  let valor = event.target.value;
-  unidadeAtual = valor;
-  atualizarPrevia();
+  atualizarValoresPrevia(event, 'unidade');
 
-  if (valor === 'm') {
+  let { value } = event.target;
+
+  if (value === 'm') {
     inputComprimento.setAttribute('step', '0.01');
+    inputComprimento.setAttribute('min', '0.01');
     inputLargura.setAttribute('step', '0.01');
-  
+    inputLargura.setAttribute('min', '0.01');
+    
+    inputComprimento.onblur = event => dispararErroCampoNumerico(event);
+    inputLargura.onblur = event => dispararErroCampoNumerico(event);
+    inputComprimento.oninvalid = event => dispararErroCampoNumerico(event);
+    inputLargura.oninvalid = event => dispararErroCampoNumerico(event);
+
   } else {
     inputComprimento.setAttribute('step', '1');
+    inputComprimento.setAttribute('min', '1');
     inputLargura.setAttribute('step', '1');
+    inputLargura.setAttribute('min', '1');
+
+    inputComprimento.onblur = event => dispararErroCampoNumerico(event, false);
+    inputLargura.onblur = event => dispararErroCampoNumerico(event, false);
+    inputComprimento.oninvalid = event => dispararErroCampoNumerico(event, false);
+    inputLargura.oninvalid = event => dispararErroCampoNumerico(event, false);
+
+  }
+
+  setModalContraOSistemaMetricoEstadunidense(value === 'pc');
+}
+
+inputTipoCeramica.onclick = function(event) {
+  atualizarValoresPrevia(event, 'tipo');
+  previsualizarCeramica();
+}
+
+inputTipoPorcelanato.onclick = function(event) {
+  atualizarValoresPrevia(event, 'tipo');
+  previsualizarPorcelanato();
+}
+
+inputTipoMadeira.onclick = function(event) {
+  atualizarValoresPrevia(event, 'tipo');
+  previsualizarMadeira();
+}
+
+inputOrcamento.onkeyup = function(event) {
+  let { value } = event.target;
   
-  }
-
-  setModalContraOSistemaMetricoEstadunidense(valor === 'pc');
-}
-
-inputQuantidade.onblur = function(event) {
-  dispararErro(event, false);
-
-  let valor = +event.target.value;  
-  if (valor) {
-    quantidadeAtual = valor;
-    atualizarPrevia();
+  if (+value) {
+    localStorage.setItem('orcamento', value);
+    orcamento = value;
+    atualizarStatusHtml();
   }
 }
-
-// TODO inputTipo.onblur
 
 form.onsubmit = function(event) {
   event.preventDefault();
   
-  let get = field => event.target[field].value;
+  let get = atributo => event.target[atributo].value;
 
   var _id = generateObjectId();
   var comprimento = +get('comprimento');
@@ -259,7 +379,7 @@ form.onsubmit = function(event) {
 
   var compra = { _id, quantidade, tipo, comprimento, largura, unidade, area, facada };
   
-  adicionarCompra(compra);
+  addCompra(compra);
 
   resetar();
 }
@@ -272,6 +392,6 @@ cabecalhoCarrinho.onclick = function() {
   carrinhoAberto = !carrinhoAberto;
 }
 
-inputComprimento.focus();
+inputOrcamento.value = orcamento;
 
 atualizarComprasHtml();
