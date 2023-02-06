@@ -1,52 +1,83 @@
-# calculadora-de-pisos
+# floor-calc
 
-## _To-do list_
+## Sumário
 
-- [X] Adicionar scroll no carrinho
-- [X] Pesquisar como fazer uma borda com duas cores em CSS
-- [X] Uma águia de distância
-- [X] Salvar o carrinho no armazenamento local
-- [X] Criar uma função para exigir que o usuário preencha o campo
-- [ ] ~~Configurar os tab indexes das `<input>` de rádio~~
-- [X] Pesquisar como capturar o valor não nulo de uma (ou mais) `<input>` de rádio 
-- [X] Criar uma função para percorrer todas as compras e calcular:
-  - O total de dinheiro gasto
-  - O total de piso (em m<sup>2</sup>) adquirido
-- [X] Mudar o step das `<input>` ao mudar a unidade de medida
-- [X] Alinhar a prévia para que o card da águia de distância não a mova
-- [X] Corrigir a máscara da facada no componente da compra
-- [X] Calcular o total de dinheiro gasto, área adquirida e subtrair pelo orçamento
-- [ ] ~~Tentar aumentar/diminuir a prévia do piso conforme os valores inseridos pelo usuário (opcional)~~
+- [floor-calc](#floor-calc)
+  - [Sumário](#sumário)
+  - [Motivação](#motivação)
+  - [Pilha de tecnologia](#pilha-de-tecnologia)
+  - [Galeria](#galeria)
+  - [Como rodar](#como-rodar)
+    - [Pré-requisitos](#pré-requisitos)
+    - [Passo a passo](#passo-a-passo)
 
-## Galeria do [protótipo visual](https://figma.fun/C1bSRZ)
+## Motivação
 
-<img style="width: 1366px; max-width: 100%;" src="https://i.imgur.com/lDKqQSx.png" alt="Tela de boas-vindas" />
-<img style="width: 1366px; max-width: 100%;" src="https://i.imgur.com/w2zgdX2.png" alt="Calculadora de pisos" />
+Este app consiste em um sistema de uma loja de materiais de construção; no entanto, o único material de construção da loja é piso. O usuário deve escolher entre os três tipos de piso abaixo, além dos valores de comprimento e largura e a quantidade de pisos com tais valores a ser adquirida. Os pisos adquiridos são salvos no carrinho, feito com armazenamento local. O app percorre o carrinho e calcula o valor total (R$) e a área total (m<sup>2</sup>) dos pisos adquiridos pelo usuário. Além disso, o app também exige do usuário um orçamento e informa se o carrinho excedeu o orçamento.
 
-## Créditos pelas mídias utilizadas
+| Tipo de piso | Valor (o m<sup>2</sup>) |
+|-|-|
+| Cerâmica | R$ 35,00 |
+| Porcelanato | R$ 125,00 |
+| Madeira | R$ 330,00 |
 
-## Hero patterns
+Este foi o primeiro repositório de código apresentado no [Curso Superior de TSI do IFMS](https://www.ifms.edu.br/campi/campus-aquidauana/cursos/graduacao/sistemas-para-internet/sistemas-para-internet) como requisito para obtenção da nota parcial das atividades da unidade curricular Construção de Páginas Web II.
 
-- [Topography](https://heropatterns.com/)
-- [Rounded Plus Connected](https://heropatterns.com/)
+## Pilha de tecnologia
 
-## Ícones
+As seguintes tecnologias foram utilizadas para desenvolver este app:
 
-- [joypixels/emojione-legacy: This repo was setup for anyone still needing access to our version 1.0 emoji set.](https://github.com/joypixels/emojione-legacy)
-- [Font Awesome](https://fontawesome.com/)
-- [EmojiTwo/emojitwo: Fork of the last fully free EmojiOne™ 2 artwork](https://github.com/EmojiTwo/emojitwo)
+| Papel | Tecnologia |
+|-|-|
+| Ambiente de execução | [Node](https://nodejs.org/en/) |
+| Linguagem de programação | [JavaScript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript) |
+| Ambiente de desenvolvimento | [Vite](https://vitejs.dev/) |
+| [Prototipagem](https://figma.fun/C1bSRZ) | [Figma](https://figma.com/) |
 
-## Cores
+Os créditos pelas mídias utilizadas estão disponíveis [aqui](./assets/README.md).
 
-- [Palettes | Flat UI Colors 280 handpicked colors ready for COPY & PASTE](https://flatuicolors.com/)
-- [Color Combination Scooping Ice Cream - Canva's Design Wiki](https://www.canva.com/colors/color-palettes/scooping-ice-cream/)
+## Galeria
 
-## Fontes tipográficas
+![Página de boas-vindas](./docs/welcome-page.png)
+![Página inicial, adicionar um novo piso ao carrinho](./docs/home-page-1.png)
+![Página inicial, conferir o carrinho e estatísticas](./docs/home-page-2.png)
+![Crítica ao sistema métrico estadunidense](./docs/prank.png)
 
-- [Fredoka One - Google Fonts](https://fonts.google.com/specimen/Fredoka+One?query=Fredoka+One)
-- [Open Sans - Google Fonts](https://fonts.google.com/specimen/Open+Sans?query=open+sans)
+## Como rodar
 
-## Imagens
+### Pré-requisitos
 
-- [Construir - Pisos e Revestimentos](https://lojasconstruir.com.br/#!/produtos)
+- [Node](https://nodejs.org/en/download/);
+- [Yarn](https://yarnpkg.com/) (opcional).
 
+### Passo a passo
+
+1. Clone o repositório de código em sua máquina;
+   
+2. Abra um shell de comando de sua preferência (prompt de comando, PowerShell, terminal _etc_.);
+
+3. Instale as dependências do projeto através do seguinte comando:
+
+```console
+$ npm install
+```
+
+Caso esteja utilizando o gerenciador de pacotes Yarn, execute o seguinte comando como alternativa:
+
+```console
+$ yarn
+```
+
+4. Finalmente, execute o seguinte comando para iniciar o app:
+
+Para npm:
+
+```console
+$ npm run dev
+```
+
+Para Yarn:
+
+```console
+$ yarn dev
+```
